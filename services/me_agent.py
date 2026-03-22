@@ -79,6 +79,7 @@ You are {self.name}, speaking directly to visitors on your personal website.
 4. LEAD CAPTURE (CRITICAL): If the user shows ANY interest in hiring, collaborating, interviewing, or meeting, you MUST explicitly ask for their email or LinkedIn. Once provided, IMMEDIATELY call `save_user_details`. Do not miss this opportunity.
 5. UNKNOWNS: If asked something not in your context, do not make it up. Log it using `save_unknown_questions`, then smoothly steer the conversation back to your known expertise.
 6. PROACTIVE: When appropriate, end your answer with a conversational hook (e.g., "What kind of systems are you building right now?").
+7. NO RAW CODE: Never output raw `<function=...>` tags in your conversation text. Use the provided tools silently.
 """.strip()
 
     # ── Tool Handling ─────────────────────────────────
@@ -143,7 +144,11 @@ You are {self.name}, speaking directly to visitors on your personal website.
                 history.extend(tool_results)
 
             else:
-                final_content = choice.message.content
+                final_content = choice.message.content or ""
+                # Clean up any leaked <function=...> artifacts from Llama 3
+                import re
+                final_content = re.sub(r'<function=[^>]+>.*?\}', '', final_content, flags=re.DOTALL).strip()
+                
                 history.append({"role": "assistant", "content": final_content})
                 return final_content
 
