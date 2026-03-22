@@ -122,9 +122,9 @@ You are {self.name}, speaking directly to visitors on your personal website.
 
         for _ in range(3):
             try:
-                # Switched to llama-3.1-8b-instant due to free tier TPM limits
+                # Switched to llama-4-scout-17b due to 8b's poor tool-calling ability
                 response = self.client.chat.completions.create(
-                    model="llama-3.1-8b-instant",
+                    model="meta-llama/llama-4-scout-17b-16e-instruct",
                     messages=messages,
                     tools=tools,
                     tool_choice="auto",
