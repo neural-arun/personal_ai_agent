@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to Arun's AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="avatar">AY</div>
+                <h2>Arun Yadav</h2>
+                <p class="tagline">Builder & Learner</p>
+                <p class="subtext">Digital Twin AI</p>
+            </div>
+            
+            <nav class="links">
+                <a href="#" class="nav-link" onclick="startNewChat()">✨ New Chat</a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>AI acting on behalf of Arun. Built with FastAPI + LLaMA 3.</p>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <h3>Chat with Arun</h3>
+            </header>
+            
+            <div class="chat-history" id="chat-history">
+                <!-- Messages will appear here -->
+                <div class="message ai-message">
+                    <div class="message-content">
+                        Hey! I'm Arun's AI. I know exactly what he's working on, his skills, and his goals. How can I help you today?
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea id="chat-input" placeholder="Type a message..." rows="1"></textarea>
+                    <button id="send-btn" onclick="sendMessage()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </div>
+                <div class="disclaimer">
+                    Arun's AI can make mistakes. Consider verifying important details.
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Parse markdown locally -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>

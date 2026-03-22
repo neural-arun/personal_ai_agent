@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+requests
+httpx
+pypdf
+# LLM / AI
+openai
+
+# Dev tools (optional but useful)
+tqdm
+rich
