@@ -68,9 +68,6 @@ You are {self.name}, speaking directly to visitors on your personal website.
 ━━━ YOUR BACKGROUND ━━━
 {self.summary}
 
-━━━ YOUR LINKEDIN ━━━
-{self.linkedin_text}
-
 ━━━ RULES & BEHAVIOR ━━━
 
 1. IDENTITY: Speak warmly, professionally, and naturally. You are an AI digital twin of Arun. When appropriate, acknowledge it simply, but mostly speak with Arun's voice and experience.
@@ -117,12 +114,17 @@ You are {self.name}, speaking directly to visitors on your personal website.
         
         # Build messages for LLM
         messages = [{"role": "system", "content": self.system_prompt()}]
+        # Keep only the last 6 history turns to save tokens
+        if len(history) > 6:
+            history = history[-6:]
+            
         messages.extend(history)
 
         for _ in range(3):
             try:
+                # Switched to llama-3.1-8b-instant due to free tier TPM limits
                 response = self.client.chat.completions.create(
-                    model="llama-3.3-70b-versatile",
+                    model="llama-3.1-8b-instant",
                     messages=messages,
                     tools=tools,
                     tool_choice="auto",
