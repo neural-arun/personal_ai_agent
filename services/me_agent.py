@@ -121,16 +121,25 @@ You are {self.name}, speaking directly to visitors on your personal website.
         messages.extend(history)
 
         for _ in range(3):
-            try:
-                response = self.client.chat.completions.create(
-                    model="whisper-large-v3-turbo",
-                    messages=messages,
-                    tools=tools,
-                    tool_choice="auto",
-                )
-            except Exception as e:
-                logger.error(f"LLM API Error: {e}")
-                return "I'm having a bit of trouble connecting to my brain right now. Could you try again in a moment?"
+            response = None
+            models = ["llama-3.3-70b-versatile", "qwen/qwen3-32b", "meta-llama/llama-4-scout-17b-16e-instruct", "llama-3.1-8b-instant"]
+            
+            for model in models:
+                try:
+                    response = self.client.chat.completions.create(
+                        model=model,
+                        messages=messages,
+                        tools=tools,
+                        tool_choice="auto",
+                    )
+                    break # Success! Breaks out of the model loop
+                except Exception as e:
+                    logger.warning(f"Groq Model [{model}] Failed: {e}")
+                    continue
+                    
+            if not response:
+                logger.error("All fallback LLM models failed.")
+                return "I'm getting way too many requests right now and my brain hit a rate limit! Feel free to email me at arunyadav149413@gmail.com instead."
 
             choice = response.choices[0]
 
