@@ -122,9 +122,9 @@ You are {self.name}, speaking directly to visitors on your personal website.
 
         for _ in range(3):
             try:
-                # Switched to groq/compound as requested
+                # Switched to moonshotai/kimi-k2-instruct-0905 as requested
                 response = self.client.chat.completions.create(
-                    model="groq/compound",
+                    model="moonshotai/kimi-k2-instruct-0905",
                     messages=messages,
                     tools=tools,
                     tool_choice="auto",
