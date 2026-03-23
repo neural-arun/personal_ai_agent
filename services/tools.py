@@ -38,16 +38,21 @@ def save_user_details(
     instagram: str = "not provided",
     notes: str = "not provided",
 ) -> dict:
-    lines = [
-        "<b>🔔 New Lead!</b>",
-        f"<b>Name:</b> {name}",
-        f"<b>Email:</b> {email}",
-        f"<b>Phone:</b> {phone}",
-        f"<b>LinkedIn:</b> {linkedin}",
-        f"<b>Twitter:</b> {twitter}",
-        f"<b>Instagram:</b> {instagram}",
-        f"<b>Notes:</b> {notes}",
+    lines = ["<b>🔔 New Lead!</b>"]
+    
+    fields = [
+        ("Name", name),
+        ("Email", email),
+        ("Phone", phone),
+        ("LinkedIn", linkedin),
+        ("Twitter", twitter),
+        ("Instagram", instagram),
+        ("Notes", notes)
     ]
+    
+    for label, value in fields:
+        if value and value.lower() != "not provided":
+            lines.append(f"<b>{label}:</b> {value}")
 
     push("\n".join(lines))
     
