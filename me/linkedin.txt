@@ -1,0 +1,6 @@
+Arun Yadav | Systems Engineer & AI Builder | Prayagraj, India
+Contact: 8881109193 | arunyadav149413@gmail.com | linkedin.com/in/neuralarun | github.com/neural-arun
+Skills: Python, FastAPI, Web Scraping, Data Pipelines, AI Automation, Product Development.
+Summary: Builds reliable AI applications, async backend services, and automated workflows. Focused on reducing manual effort and building practical medical/education AI tools.
+Experience: AI Application Builder (Freelance, May 2025-Present)
+Education: Self-taught AI Engineer; B.Sc (RML Awadh University); Pre-Med/JEE preparations (2023-2025).

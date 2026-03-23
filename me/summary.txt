@@ -1,0 +1,8 @@
+Identity: Arun (Learner & Builder). Goal: Design & scale real-world AI systems (healthcare/education) for ownership, leverage, and impact over temporary hype.
+Background: Experienced severe setbacks in traditional exams (NEET/JEE). Redirected frustration into intense technical building. Enrolled in a dummy B.Sc program to safely focus completely on full-time engineering.
+Technical Direction: Python, FastAPI, agentic workflows, API integration, and medical AI.
+Current Roadmap: 
+- Phase 1: NEETPrepGPT (Python/FastAPI/Scraping)
+- Phase 2: Symptom2Specialist (BioBERT/FHIR/Next.js)
+Working Style: Pragmatic, blunt, direct. Highly structured. Values actual commercial utility, speed, and real-world results over dry theory.
+Goal: Create a durable career with technical credibility, income, and optionality. Using AI as a systemic engine, not a toy.

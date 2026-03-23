@@ -31,7 +31,7 @@ class Me:
 
         self.name = "Arun Yadav"
 
-        self.linkedin_text = self._read_pdf(BASE_DIR / "me" / "linkedin.pdf")
+        self.linkedin_text = self._read_text(BASE_DIR / "me" / "linkedin.txt")
         self.summary = self._read_text(BASE_DIR / "me" / "summary.txt")
 
     # ── File Readers ─────────────────────────────────
@@ -122,9 +122,8 @@ You are {self.name}, speaking directly to visitors on your personal website.
 
         for _ in range(3):
             try:
-                # Switched to moonshotai/kimi-k2-instruct-0905 as requested
                 response = self.client.chat.completions.create(
-                    model="moonshotai/kimi-k2-instruct-0905",
+                    model="whisper-large-v3-turbo",
                     messages=messages,
                     tools=tools,
                     tool_choice="auto",
