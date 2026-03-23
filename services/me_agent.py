@@ -122,9 +122,9 @@ You are {self.name}, speaking directly to visitors on your personal website.
 
         for _ in range(3):
             try:
-                # Switched to llama-4-scout-17b due to 8b's poor tool-calling ability
+                # Switched to groq/compound as requested
                 response = self.client.chat.completions.create(
-                    model="meta-llama/llama-4-scout-17b-16e-instruct",
+                    model="groq/compound",
                     messages=messages,
                     tools=tools,
                     tool_choice="auto",
