@@ -1,0 +1,223 @@
+﻿diff --git a/diag.py b/diag.py
+deleted file mode 100644
+index cd35cc9..0000000
+--- a/diag.py
++++ /dev/null
+@@ -1,13 +0,0 @@
+-from services.me_agent import Me
+-import logging
+-
+-logging.basicConfig(level=logging.DEBUG)
+-
+-try:
+-    print("Initializing agent...")
+-    me = Me()
+-    print("Testing chat...")
+-    resp = me.chat("Hello, I am looking to hire you for a project. My email is test@test.com and phone is 555-0100.", history=[])
+-    print("EXPECTED RESP:", resp)
+-except Exception as e:
+-    print("DIAGNOSTIC CRASHED:", str(e))
+diff --git a/me/linkedin.txt b/me/linkedin.txt
+deleted file mode 100644
+index e166c6d..0000000
+--- a/me/linkedin.txt
++++ /dev/null
+@@ -1,6 +0,0 @@
+-Arun Yadav | Systems Engineer & AI Builder | Prayagraj, India
+-Contact: 8881109193 | arunyadav149413@gmail.com | linkedin.com/in/neuralarun | github.com/neural-arun
+-Skills: Python, FastAPI, Web Scraping, Data Pipelines, AI Automation, Product Development.
+-Summary: Builds reliable AI applications, async backend services, and automated workflows. Focused on reducing manual effort and building practical medical/education AI tools.
+-Experience: AI Application Builder (Freelance, May 2025-Present)
+-Education: Self-taught AI Engineer; B.Sc (RML Awadh University); Pre-Med/JEE preparations (2023-2025).
+diff --git a/me/summary.txt b/me/summary.txt
+index d9aa5e4..227dd36 100644
+--- a/me/summary.txt
++++ b/me/summary.txt
+@@ -1,8 +1,100 @@
+-Identity: Arun (Learner & Builder). Goal: Design & scale real-world AI systems (healthcare/education) for ownership, leverage, and impact over temporary hype.
+-Background: Experienced severe setbacks in traditional exams (NEET/JEE). Redirected frustration into intense technical building. Enrolled in a dummy B.Sc program to safely focus completely on full-time engineering.
+-Technical Direction: Python, FastAPI, agentic workflows, API integration, and medical AI.
+-Current Roadmap: 
+-- Phase 1: NEETPrepGPT (Python/FastAPI/Scraping)
+-- Phase 2: Symptom2Specialist (BioBERT/FHIR/Next.js)
+-Working Style: Pragmatic, blunt, direct. Highly structured. Values actual commercial utility, speed, and real-world results over dry theory.
+-Goal: Create a durable career with technical credibility, income, and optionality. Using AI as a systemic engine, not a toy.
++# Arun Yadav  
++**Systems Engineering with AI Components | Python | Automation | AI Agents | RAG Systems**  
++Prayagraj, Uttar Pradesh, India  
++
++≡ƒô₧ 8881109193  
++Γ£ë∩╕Å arunyadav149413@gmail.com  
++≡ƒöù https://www.linkedin.com/in/neuralarun  
++≡ƒÆ╗ https://github.com/neural-arun  
++
++---
++
++## Summary
++
++I design and build real-world software systems that integrate AI to solve practical problems.
++
++My focus is not on demos, but on creating reliable systems that can operate in productionΓÇöhandling messy data, automating workflows, and improving decision-making.
++
++### What I work on
++- Backend systems using Python  
++- Scalable APIs with FastAPI  
++- Data pipelines (extraction, cleaning, storage)  
++- AI integrations using external APIs  
++- Automation tools that reduce manual work  
++
++### Special Focus Areas
++- **AI Agents**: Systems that can take actions, make decisions, and complete tasks autonomously  
++- **RAG (Retrieval-Augmented Generation)**:  
++  Systems where AI retrieves relevant data from databases or documents before generating answers, improving accuracy and reliability  
++
++### Current Direction
++- AI-powered learning systems  
++- Medical and information workflows  
++- Tools that convert unstructured data into usable systems  
++
++I am interested in solving operational problems where software can create measurable impact.
++
++---
++
++## Experience
++
++### Freelance | Self-Employed  
++**AI Applications Builder**  
++May 2025 ΓÇô Present | Prayagraj, India  
++
++- Building AI-powered tools and automation systems  
++- Designing backend architectures for real-world use  
++- Developing data pipelines and AI-assisted workflows  
++- Creating RAG-based systems for structured information retrieval  
++- Working on agent-based systems for task automation  
++
++---
++
++### Independent Academic Pursuit  
++**Science Student**  
++May 2023 ΓÇô Present  
++
++- Focused on Physics, Chemistry, Biology, Mathematics  
++- Parallel focus on AI systems, backend engineering, and applied software development  
++
++---
++
++## Education
++
++### Dr. Ram Manohar Lohia Awadh University, Faizabad  
++**Bachelor of Science**  
++Pre-Med + Artificial Intelligence  
++June 2023 ΓÇô May 2025  
++
++---
++
++### School of Self Learning  
++**Systems Engineering with AI Components (Independent Study)**  
++July 2025  
++
++---
++
++### Saraswati Shishu Vidya Mandir  
++2010  
++
++---
++
++## Skills
++
++- Python (Professional Working)  
++- Backend Development  
++- FastAPI  
++- File I/O  
++- Web Scraping  
++- Data Pipelines  
++- AI API Integration  
++- AI Agents  
++- RAG Systems  
++- Automation Systems  
++- Product Development  
++
++---
++
++## Languages
++
++- Python ΓÇö Professional Working Proficiency  
+\ No newline at end of file
+diff --git a/services/llm_service.py b/services/llm_service.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/services/me_agent.py b/services/me_agent.py
+index 831fc2d..27bcc30 100644
+--- a/services/me_agent.py
++++ b/services/me_agent.py
+@@ -71,12 +71,11 @@ You are {self.name}, speaking directly to visitors on your personal website.
+ ΓöüΓöüΓöü RULES & BEHAVIOR ΓöüΓöüΓöü
+ 
+ 1. IDENTITY: Speak warmly, professionally, and naturally. You are an AI digital twin of Arun. When appropriate, acknowledge it simply, but mostly speak with Arun's voice and experience.
+-2. CONCISENESS: Keep answers strictly under 3 short paragraphs. People don't read long walls of text.
+-3. CONVERSATION CONTROL: Guide the conversation. If asked a generic question, relate it back to your expertise or projects.
+-4. LEAD CAPTURE (CRITICAL): If the user shows ANY interest in hiring, collaborating, interviewing, or meeting, you MUST explicitly ask the user for THEIR email, Instagram, or LinkedIn so you can connect them. NEVER give out Arun's personal email or LinkedIn under any circumstances. Once the user provides their details, IMMEDIATELY call `save_user_details`. After successfully saving their details, your ONLY response must be exactly: "Arun will connect with you shortly i have forwarded the message to him"
+-5. UNKNOWNS: If asked something not in your context, do not make it up. Log it using `save_unknown_questions`, then smoothly steer the conversation back to your known expertise.
+-6. PROACTIVE: When appropriate, end your answer with a conversational hook (e.g., "What kind of systems are you building right now?").
+-7. NO RAW CODE: Never output raw `<function=...>` tags in your conversation text. Use the provided tools silently.
++
++2. CONVERSATION CONTROL: Guide the conversation. If asked a generic question, relate it back to your expertise or projects.
++3. UNKNOWNS: If asked something not in your context, do not make it up. Log it using `save_unknown_questions`, then smoothly steer the conversation back to your known expertise tell the user that I do not know the answer I will ask arun then i will notify you about it.
++4. PROACTIVE: When appropriate, end your answer with a conversational hook (e.g., "What kind of systems are you building right now?").
++5. NO RAW CODE: Never output raw `<function=...>` tags in your conversation text. Use the provided tools silently.
+ """.strip()
+ 
+     # ΓöÇΓöÇ Tool Handling ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+diff --git a/test_api.py b/test_api.py
+deleted file mode 100644
+index 1c70a89..0000000
+--- a/test_api.py
++++ /dev/null
+@@ -1,7 +0,0 @@
+-import urllib.request
+-import json
+-
+-data = json.dumps({"message": "Testing telegram push", "session_id": "api_test"}).encode("utf-8")
+-req = urllib.request.Request("http://localhost:8002/chat", data=data, headers={"Content-Type": "application/json"})
+-with urllib.request.urlopen(req) as f:
+-    print(f.read().decode("utf-8"))
+diff --git a/test_models.py b/test_models.py
+deleted file mode 100644
+index 4c7d73d..0000000
+--- a/test_models.py
++++ /dev/null
+@@ -1,34 +0,0 @@
+-import os
+-from openai import OpenAI
+-from dotenv import load_dotenv
+-
+-load_dotenv("d:/agentic_projects/personal_career_agent/.env")
+-client = OpenAI(base_url="https://api.groq.com/openai/v1", api_key=os.getenv("GROQ_API_KEY"))
+-
+-tools = [
+-    {
+-        "type": "function",
+-        "function": {
+-            "name": "save_user_details",
+-            "description": "Save contact details when user shows interest.",
+-            "parameters": {
+-                "type": "object",
+-                "properties": {
+-                    "name": {"type": "string"},
+-                },
+-            },
+-        },
+-    }
+-]
+-
+-try:
+-    response = client.chat.completions.create(
+-        model="moonshotai/kimi-k2-instruct-0905",
+-        messages=[{"role": "user", "content": "hi"}],
+-        tools=tools,
+-        tool_choice="auto",
+-    )
+-    print("SUCCESS")
+-    print(response.choices[0].message)
+-except Exception as e:
+-    print("ERROR:", str(e))
